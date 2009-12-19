@@ -10,6 +10,10 @@ module EventMachine
         @buffer = []
         @tries = 0
         ProxyMachine.incr
+
+        if greeting = ProxyMachine.greeting
+          send_data(greeting)
+        end
       end
 
       def receive_data(data)
